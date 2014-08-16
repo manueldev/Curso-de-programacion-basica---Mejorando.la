@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
 	<title>Clase 1 - Piedra, papel, tijeras</title>
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" />
 	<link rel="stylesheet" href="style.css" />	
@@ -18,12 +19,15 @@
 			</div>	
 			<div class="eleccionSheldon"></div>
 		</div>
-	
-		<ul id="tuJugada" class="disabled">
-			<li class="2">Piedra</li>
-			<li class="0">Papel</li>
-			<li class="1">Tijeras</li>
-		</ul>
+		<div class="zonadejugadas">
+			<ul id="tuJugada" class="disabled">
+				<li class="2">Piedra</li>
+				<li class="0">Papel</li>
+				<li class="1">Tijeras</li>
+			</ul>
+			<div class="resultado"><span class="res_mensaje"></span></div>
+		</div>
+		
 		<div class="resultadometer"><div class="indice"></div></div>
 		<div class="resultados victorias">Victorias<span class="valor">0</span></div>
 		<div class="resultados empates">Empates<span class="valor">0</span></div>

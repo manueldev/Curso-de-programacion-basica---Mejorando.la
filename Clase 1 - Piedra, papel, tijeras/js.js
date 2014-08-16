@@ -11,7 +11,12 @@ function setOnclickOpciones(){
 	    }
 	};
 	document.getElementById("tuJugada").className = "";
-	document.getElementsByClassName("eleccionSheldon")[0].style.bottom = "-100px";
+	document.getElementsByClassName("eleccionSheldon")[0].style.bottom = "0px";
+	document.getElementsByClassName("eleccionSheldon")[0].style.opacity = "0";
+
+	document.getElementsByClassName("resultado")[0].style.zIndex = "-1";
+	document.getElementsByClassName("resultado")[0].style.top = "72px";
+	document.getElementsByClassName("resultado")[0].style.opacity = "0";		
 
 }
 
@@ -19,6 +24,7 @@ function jugada(eleccionUsuario){
 	eleccionSheldon = generarEleccion(2, 0);
 	document.getElementsByClassName("eleccionSheldon")[0].innerHTML = opciones[eleccionSheldon];
 	document.getElementsByClassName("eleccionSheldon")[0].style.bottom = "25px";
+	document.getElementsByClassName("eleccionSheldon")[0].style.opacity = "1";
 
 	ganador = definirGanador(eleccionUsuario, eleccionSheldon);
 	
@@ -53,6 +59,14 @@ function empate(){
 	document.getElementById("tuJugada").className = "disabled";	
 	document.getElementsByClassName("caraSheldon")[0].getElementsByClassName("empatado")[0].style.opacity = "1";
 	document.getElementById("tuJugada").onclick = null;
+	
+	document.getElementsByClassName("resultado")[0].style.zIndex = "10";	
+	document.getElementsByClassName("resultado")[0].style.top = "42px";
+	document.getElementsByClassName("resultado")[0].style.opacity = "1";
+
+	document.getElementsByClassName("resultado")[0].getElementsByClassName("res_mensaje")[0].innerHTML = "Empate :|";
+
+
 	setTimeout(function(){
 		document.getElementsByClassName("caraSheldon")[0].getElementsByClassName("empatado")[0].style.opacity = "0";
 		setOnclickOpciones();
@@ -65,6 +79,13 @@ function ganaUsuario(eleccion){
 	document.getElementById("tuJugada").className = "disabled";
 	document.getElementsByClassName("caraSheldon")[0].getElementsByClassName("triste")[0].style.opacity = "1";
 	document.getElementById("tuJugada").onclick = null;
+	
+	document.getElementsByClassName("resultado")[0].style.zIndex = "10";	
+	document.getElementsByClassName("resultado")[0].style.top = "42px";
+	document.getElementsByClassName("resultado")[0].style.opacity = "1";
+	document.getElementsByClassName("resultado")[0].getElementsByClassName("res_mensaje")[0].innerHTML = "Ganaste :D";
+
+
 	setTimeout(function(){
 		document.getElementsByClassName("caraSheldon")[0].getElementsByClassName("triste")[0].style.opacity = "0";
 		setOnclickOpciones();
@@ -77,6 +98,12 @@ function ganaSheldon(eleccion){
 	document.getElementById("tuJugada").className = "disabled";
 	document.getElementsByClassName("caraSheldon")[0].getElementsByClassName("feliz")[0].style.opacity = "1";
 	document.getElementById("tuJugada").onclick = null;
+	
+	document.getElementsByClassName("resultado")[0].style.zIndex = "10";	
+	document.getElementsByClassName("resultado")[0].style.top = "42px";
+	document.getElementsByClassName("resultado")[0].style.opacity = "1";
+	document.getElementsByClassName("resultado")[0].getElementsByClassName("res_mensaje")[0].innerHTML = "Ganó Sheldon :(";
+
 	setTimeout(function(){
 		document.getElementsByClassName("caraSheldon")[0].getElementsByClassName("feliz")[0].style.opacity = "0";
 		setOnclickOpciones();
