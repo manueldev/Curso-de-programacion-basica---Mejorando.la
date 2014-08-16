@@ -3,4 +3,4 @@
 
 ## Clase 1, Papel, piedra, tijeras.
 
-[Vista previa](http://htmlpreview.github.com/?https://github.com/manueldev/*/blob/master/index.html)
+[Vista previa](http://htmlpreview.github.com/?https://github.com/manueldev/Curso-de-programacion-basica---Mejorando.la/blob/master/Clase%201%20-%20Piedra%2C%20papel%2C%20tijeras/index.html)
