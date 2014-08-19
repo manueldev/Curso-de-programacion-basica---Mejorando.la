@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lineas diagonales y circulo relleno en canvas</title>
+</head>
+<body>
+	<canvas width="500" height="500" id="dibujito"></canvas>
+	<script type="text/javascript">
+	inicio();
+
+	function inicio () {
+		var dibujo = document.getElementById("dibujito");
+		var lienzo = dibujo.getContext("2d");
+		dibujarGrillar(lienzo, 10);
+		dibujarCirculo(lienzo);
+		dibujarDiagonales(lienzo, 10);
+		
+	}
+
+	function dibujarGrillar(lienzocanvas, cant_rayas){
+		var ancho = lienzocanvas.canvas.width, alto = lienzocanvas.canvas.height; //Dimensiones del lienzo.
+		var anchoLinea = ancho / cant_rayas; //Determina el ancho entre cada raya dependiendo de la cantidad de rayas y el ancho del lienzo.
+
+		var altoLinea = alto / cant_rayas; //Determina el alto entre cada raya dependiendo de la cantidad de rayas y el alto del lienzo.
+
+
+		var limiteX = cant_rayas; //Determina el limite del eje X (horizontal) por la cantidad de rayas a dibujar.
+		var limiteY = cant_rayas;//Determina el limite del eje y (vertical) por la cantidad de rayas a dibujar.
+
+		for (var linea = 0; linea <= limiteX; linea++) {
+			//dibujar lineas verticales
+			punto = (linea * anchoLinea) - 0.5; //el punto del eje X desde donde se comenzará a dibujar
+			lienzocanvas.beginPath(); //comenzar a dibujar (lapiz en papel :) )
+			lienzocanvas.strokeStyle = "blue"; //color linea
+			lienzocanvas.moveTo(punto, 0.5); //punto iniciar x,y. Comienzo de la linea.
+			lienzocanvas.lineTo(punto, alto-0.5); //punto final x,y. Final de la linea.
+			lienzocanvas.stroke(); //dibujar lo planeado
+			lienzocanvas.closePath(); //terminar de dibujar (levantar el lapiz del papel)
+		}
+
+		for (var linea = 0; linea <= limiteY; linea++) {
+			//dibujar lineas horizontales
+			punto = (linea * altoLinea) - 0.5; //el punto del eje Y desde donde se comenzará a dibujar
+			lienzocanvas.beginPath(); //comenzar a dibujar (lapiz en papel :) )
+			lienzocanvas.strokeStyle = "black"; //color linea
+			lienzocanvas.moveTo(0.5, punto); //punto iniciar x,y. Comienzo de la linea.
+			lienzocanvas.lineTo(ancho-0.5, punto); //punto final x,y. Final de la linea.
+			lienzocanvas.stroke(); //dibujar lo planeado
+			lienzocanvas.closePath(); //terminar de dibujar (levantar el lapiz del papel)
+		}
+	}
+
+	function dibujarCirculo(lienzocanvas){
+		var ancho = lienzocanvas.canvas.width, alto = lienzocanvas.canvas.height; //Dimensiones del lienzo.
+		lienzocanvas.beginPath(); //comenzar a dibujar (lapiz en papel :) )
+		lienzocanvas.strokeStyle = "#00F"; //color linea
+
+		/* Creando el circulo */
+
+		lienzocanvas.arc(ancho/2, alto/2, ancho/5, (Math.PI * 2), false);
+		//    arc(	coordenada X del punto central del circulo,
+		//    		coordenada Y del punto central del circulo,
+		// 		radio del circulo,
+		// 		comienzo del angulo (0 = las 3 del reloj, 
+		// 							0.5 * Math.PI = las 6 del reloj,
+		// 							1 * Math.PI = las 9 del reloj,
+		// 							1.5 * Math.PI = las 12 del reloj),
+		// 		fin del angulo (0 = las 3 del reloj, 
+		// 							0.5 * Math.PI = las 6 del reloj,
+		// 							1 * Math.PI = las 9 del reloj,
+		// 							1.5 * Math.PI = las 12 del reloj), 
+		// 		dibujar en direccion del reloj o en contra (por defecto false = direccion del reloj)
+		//    	)
+
+		/* Rellenando color al circulo */
+		lienzocanvas.fillStyle="red"; //color
+		lienzocanvas.fill(); //llenar con el color	
+		/* Fin de Rellenando color al circulo */
+		lienzocanvas.stroke(); //dibujar lo planeado
+		lienzocanvas.closePath(); //terminar de dibujar (levantar el lapiz del papel)
+	}
+
+	function dibujarDiagonales(lienzocanvas, cant_rayas){
+		var ancho = lienzocanvas.canvas.width, alto = lienzocanvas.canvas.height; //Dimensiones del lienzo.
+		var anchoLinea = ancho / cant_rayas; //Determina el ancho entre cada raya dependiendo de la cantidad de rayas y el ancho del lienzo.
+
+		var altoLinea = alto / cant_rayas; //Determina el alto entre cada raya dependiendo de la cantidad de rayas y el alto del lienzo.
+
+
+		var limiteX = cant_rayas; //Determina el limite del eje X (horizontal) por la cantidad de rayas a dibujar.
+		var limiteY = cant_rayas;//Determina el limite del eje y (vertical) por la cantidad de rayas a dibujar.
+
+		for (var linea = 0; linea <= limiteX; linea++) {
+			//dibujar lineas verticales, arriba a derecha.
+			punto = (linea * anchoLinea) - 0.5; //el punto del eje X desde donde se comenzará a dibujar
+			lienzocanvas.beginPath(); //comenzar a dibujar (lapiz en papel :) )
+			lienzocanvas.strokeStyle = "red"; //color linea
+			lienzocanvas.moveTo(punto, 0.5); //punto iniciar x,y. Comienzo de la linea.
+			lienzocanvas.lineTo(ancho, alto-(linea*altoLinea)); //punto final x,y. Final de la linea.
+			lienzocanvas.stroke(); //dibujar lo planeado
+			lienzocanvas.closePath(); //terminar de dibujar (levantar el lapiz del papel)
+		}
+
+		for (var linea = 1; linea <= limiteX; linea++) {
+			//dibujar lineas verticales, arriba a izquierda
+			punto = (linea * anchoLinea) - 0.5; //el punto del eje X desde donde se comenzará a dibujar
+			lienzocanvas.beginPath(); //comenzar a dibujar (lapiz en papel :) )
+			lienzocanvas.strokeStyle = "orange"; //color linea
+			lienzocanvas.moveTo(punto, 0); //punto iniciar x,y. Comienzo de la linea.
+			lienzocanvas.lineTo(0.5, punto); //punto final x,y. Final de la linea.
+			lienzocanvas.stroke(); //dibujar lo planeado
+			lienzocanvas.closePath(); //terminar de dibujar (levantar el lapiz del papel)
+		}
+
+		for (var linea = 0; linea <= limiteY; linea++) {
+			//dibujar lineas horizontales, izquierda a abajo.
+			punto = (linea * altoLinea) - 0.5; //el punto del eje Y desde donde se comenzará a dibujar
+			lienzocanvas.beginPath(); //comenzar a dibujar (lapiz en papel :) )
+			lienzocanvas.strokeStyle = "cyan"; //color linea
+			lienzocanvas.moveTo(0.5, punto); //punto iniciar x,y. Comienzo de la linea.
+			lienzocanvas.lineTo(ancho-(linea*anchoLinea), alto); //punto final x,y. Final de la linea.
+			lienzocanvas.stroke(); //dibujar lo planeado
+			lienzocanvas.closePath(); //terminar de dibujar (levantar el lapiz del papel)
+		}
+
+		for (var linea = 0; linea <= limiteY; linea++) {
+			//dibujar lineas horizontales, derecha a abajo.
+			punto = (linea * altoLinea) - 0.5; //el punto del eje Y desde donde se comenzará a dibujar
+			lienzocanvas.beginPath(); //comenzar a dibujar (lapiz en papel :) )
+			lienzocanvas.strokeStyle = "cyan"; //color linea
+			lienzocanvas.moveTo(alto, punto); //punto iniciar x,y. Comienzo de la linea.
+			lienzocanvas.lineTo(punto, alto); //punto final x,y. Final de la linea.
+			lienzocanvas.stroke(); //dibujar lo planeado
+			lienzocanvas.closePath(); //terminar de dibujar (levantar el lapiz del papel)
+		}
+	}
+	</script>
+</body>
+</html>
